@@ -11,7 +11,7 @@ import {
 
 import Article from 'components/Article';
 import Loader from 'components/Loader';
-import LoadMoreBtn from 'components/LoadMoreBtn';
+import Button from 'components/Button';
 
 import * as s from './ArticlesList.styled';
 
@@ -55,7 +55,7 @@ const ArticlesList = () => {
 
   return (
     <s.Container>
-      {!isLoading && !error ? (
+      {isLoading && !error ? (
         <Loader />
       ) : (
         <>
@@ -65,7 +65,9 @@ const ArticlesList = () => {
                 <Article article={article} />
               </div>
             ))}
-          {showLoadMoreBtn && <LoadMoreBtn onLoadMoreBtn={onLoadMoreBtn} />}
+          {showLoadMoreBtn && (
+            <Button func={onLoadMoreBtn} name={'Load more'} />
+          )}
         </>
       )}
     </s.Container>

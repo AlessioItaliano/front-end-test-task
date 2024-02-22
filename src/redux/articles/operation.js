@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_KEY = '51944f67e49a4163907ba6a3561ac811';
+const API_KEY = 'b1969fcdd10b43f79421471d42c2f6ec';
 
 axios.defaults.baseURL = 'https://newsapi.org/v2/everything?q=keyword&';
 axios.defaults.headers.common['Authorization'] = API_KEY;
