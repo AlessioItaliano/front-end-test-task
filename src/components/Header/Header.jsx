@@ -11,8 +11,6 @@ const Header = () => {
       </s.Logo>
       <Button name={'Register'} />
       <Button name={'Log in'} />
-      {/* <Navigation /> */}
-      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
     </s.Header>
   );
 };
