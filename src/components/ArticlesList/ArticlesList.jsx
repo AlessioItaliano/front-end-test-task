@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getFirstPage } from '../../redux/articles/operation';
+import { getFirstPage, getNextPage } from '../../redux/articles/operation';
 
 import {
   selectArticles,
@@ -11,41 +11,43 @@ import {
 
 import Article from 'components/Article';
 import Loader from 'components/Loader';
+import LoadMoreBtn from 'components/LoadMoreBtn';
 
 import * as s from './ArticlesList.styled';
 
 const ArticlesList = () => {
   const dispatch = useDispatch();
 
+  const [page, setPage] = useState(1);
+  const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(false);
+
   const articles = useSelector(selectArticles);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
 
-  const [page, setPage] = useState(1);
+  console.log(articles);
 
-  console.log('articles :', articles);
-  console.log('error :', error);
-  console.log('isLoading :', isLoading);
+  const onLoadMoreBtn = () => {
+    setPage(page + 1);
+  };
+
+  const checkTotalResults = (response, page) => {
+    return (
+      response.payload.totalResults > response.payload.articles.length * page
+    );
+  };
 
   useEffect(() => {
     const fetchData = async () => {
+      let response;
+
       if (page === 1) {
-        dispatch(getFirstPage());
-        // setShowButton(true);
+        response = await dispatch(getFirstPage());
+      } else {
+        response = await dispatch(getNextPage(page));
       }
 
-      // if (page > 1) {
-      //   const response = await dispatch(getRestOfCars(page));
-      //   if (response.payload.length >= 8) {
-      //     setShowButton(true);
-      //   } else {
-      //     setShowButton(false);
-      //   }
-      // }
-
-      // if (filteredCars.length !== 0) {
-      //   setShowButton(false);
-      // }
+      setShowLoadMoreBtn(checkTotalResults(response, page));
     };
 
     fetchData();
@@ -53,36 +55,21 @@ const ArticlesList = () => {
 
   return (
     <s.Container>
-      {error && isLoading ? (
+      {!isLoading && !error ? (
         <Loader />
       ) : (
-        articles.map(article => (
-          <s.Item key={article.id}>
-            <Article article={article} />
-          </s.Item>
-        ))
+        <>
+          {articles &&
+            articles.map(article => (
+              <div key={article.publishedAt}>
+                <Article article={article} />
+              </div>
+            ))}
+          {showLoadMoreBtn && <LoadMoreBtn onLoadMoreBtn={onLoadMoreBtn} />}
+        </>
       )}
     </s.Container>
   );
 };
 
 export default ArticlesList;
-
-// import Navigation from 'components/navigation';
-// import UserMenu from 'components/userMenu';
-// import AuthNav from 'components/authNav';
-// import { useAuth } from 'hooks';
-// import { HeaderNav } from './Header.styled';
-
-// const Header = () => {
-//   const { isLoggedIn } = useAuth();
-
-//   return (
-//     <Container>
-//       <Navigation />
-//       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-//     </Container>
-//   );
-// };
-
-// export default Header;

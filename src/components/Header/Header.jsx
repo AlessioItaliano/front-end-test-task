@@ -1,12 +1,16 @@
 import * as s from './Header.styled';
 
+import mainLogo from 'images/logo.png';
+
 const Header = () => {
   return (
-    <s.Container>
-      <p>Ciao</p>
+    <s.Header>
+      <s.Logo to="/">
+        <img src={mainLogo} alt="News_logo" />
+      </s.Logo>
       {/* <Navigation /> */}
       {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
-    </s.Container>
+    </s.Header>
   );
 };
 

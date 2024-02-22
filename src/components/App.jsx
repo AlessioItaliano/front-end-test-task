@@ -1,19 +1,21 @@
-import Header from './Header';
-// import Body from './Body';
-// import Footer from './Footer';
+import { lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-import * as s from './App.styled';
-import ArticlesList from './ArticlesList';
+import Layout from 'components/Layout';
 
-function App() {
+const HomePage = lazy(() => import('pages/Home'));
+const AccountPage = lazy(() => import('pages/Account'));
+
+const App = () => {
   return (
-    <s.Layout>
-      <Header />
-      <ArticlesList />
-      {/* <Body /> */}
-      {/* <Footer /> */}
-    </s.Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="account" element={<AccountPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
 export default App;

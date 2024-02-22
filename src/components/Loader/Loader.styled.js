@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// import { variables } from '../../stylesheet/variables';
+import { variables } from 'stylesheet/variables';
 
 export const LoaderStyle = styled.div`
   display: flex;
@@ -8,5 +8,5 @@ export const LoaderStyle = styled.div`
   align-items: center;
   height: 100vh;
 
-  background-color: black;
+  background-color: ${variables.colors.bgMain};
 `;

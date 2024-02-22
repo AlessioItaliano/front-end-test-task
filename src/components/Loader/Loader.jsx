@@ -1,21 +1,23 @@
-import { ThreeCircles } from 'react-loader-spinner';
+import { Hourglass } from 'react-loader-spinner';
 
 import * as s from './Loader.styled';
+
+import { variables } from 'stylesheet/variables';
 
 const Loader = () => {
   return (
     <s.LoaderStyle>
-      <ThreeCircles
-        height="100"
-        width="100"
-        color="#0B44CD"
+      <Hourglass
+        visible={true}
+        height="90"
+        width="90"
+        ariaLabel="hourglass-loading"
         wrapperStyle={{}}
         wrapperClass=""
-        visible={true}
-        ariaLabel="three-circles-rotating"
-        outerCircleColor=""
-        innerCircleColor=""
-        middleCircleColor=""
+        colors={[
+          `${variables.colors.tertiary}`,
+          `${variables.colors.quaternary}`,
+        ]}
       />
     </s.LoaderStyle>
   );
