@@ -1,3 +1,4 @@
+import Button from 'components/Button';
 import * as s from './Header.styled';
 
 import mainLogo from 'images/logo.png';
@@ -8,6 +9,8 @@ const Header = () => {
       <s.Logo to="/">
         <img src={mainLogo} alt="News_logo" />
       </s.Logo>
+      <Button name={'Register'} />
+      <Button name={'Log in'} />
       {/* <Navigation /> */}
       {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
     </s.Header>
