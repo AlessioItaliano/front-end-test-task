@@ -54,24 +54,25 @@ const ArticlesList = () => {
 
   return (
     <>
-      <s.Container>
-        {isLoading && !error ? (
-          <Loader />
-        ) : (
-          <>
+      {!isLoading && !error ? (
+        <Loader />
+      ) : (
+        <>
+          <s.Container>
             {articles &&
               articles.map(article => (
                 <div key={article.publishedAt}>
                   <Article article={article} />
                 </div>
               ))}
-          </>
-        )}
-      </s.Container>
-      {showLoadMoreBtn && (
-        <s.ButtonContainer>
-          <Button func={onLoadMoreBtn} name={'Load more'} type={'button'} />
-        </s.ButtonContainer>
+          </s.Container>
+
+          {showLoadMoreBtn && (
+            <s.ButtonContainer>
+              <Button func={onLoadMoreBtn} name={'Load more'} type={'button'} />
+            </s.ButtonContainer>
+          )}
+        </>
       )}
     </>
   );
