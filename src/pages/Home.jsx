@@ -4,10 +4,13 @@ import Section from 'components/Section';
 
 const Home = () => {
   return (
-    <Section>
-      <SearchBar />
-      <ArticlesList />
-    </Section>
+    <>
+      <Section>
+        <SearchBar />
+
+        <ArticlesList />
+      </Section>
+    </>
   );
 };
 

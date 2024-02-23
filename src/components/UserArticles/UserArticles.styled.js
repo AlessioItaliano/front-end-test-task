@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { variables } from '../../stylesheet/variables';
 
-export const Container = styled.li`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

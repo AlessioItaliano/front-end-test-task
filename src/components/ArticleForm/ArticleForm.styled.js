@@ -5,8 +5,8 @@ import { variables } from 'stylesheet/variables';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
+  width: 100%;
 `;
 
 export const Label = styled.label`
@@ -18,7 +18,6 @@ export const Label = styled.label`
 `;
 
 export const InputTitle = styled.input`
-  width: 100%;
   padding: 18px 20px;
   font-size: 18px;
 
@@ -26,18 +25,16 @@ export const InputTitle = styled.input`
   background: ${variables.colors.quinary};
   border-radius: 18px;
   border: 1px solid transparent;
-  box-sizing: border-box;
 `;
 
-export const InputDescription = styled.input`
-  width: 100%;
+export const InputDescription = styled.textarea`
   padding: 18px 20px;
   font-size: 18px;
-  height: 100%;
+  height: 180px;
+  resize: vertical;
 
   color: ${variables.colors.primary};
   background: ${variables.colors.quinary};
   border-radius: 18px;
   border: 1px solid transparent;
-  box-sizing: border-box;
 `;

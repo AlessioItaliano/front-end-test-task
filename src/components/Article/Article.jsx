@@ -13,7 +13,7 @@ const Article = ({ article }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const favorite = useSelector(selectFavorite);
 
-  const { urlToImage, author, description, title, publishedAt } = article;
+  const { urlToImage, author, description, title } = article;
 
   const handleFavorite = e => {
     e.stopPropagation();

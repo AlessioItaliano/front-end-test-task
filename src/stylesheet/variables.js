@@ -42,5 +42,10 @@ export const variables = {
     additionalModal: 'Montserrat',
   },
 
-  breakpoints: { mobile: '375px', tablet: '768px', desktop: '1240px' },
+  breakpoints: {
+    mobileMin: '320px',
+    mobileMax: '575px',
+    tablet: '576px',
+    desktop: '992px',
+  },
 };

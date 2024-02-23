@@ -9,10 +9,19 @@ export const Container = styled.li`
   flex-direction: column;
   position: relative;
 
-  width: 274px;
+  padding: 10px;
+  min-width: 260px;
   height: 426px;
+  border-radius: 12px;
 
   background-color: ${variables.colors.secondary};
+
+  @media screen and (min-width: ${variables.breakpoints.tablet}) {
+    width: 260px;
+  }
+  @media screen and (min-width: ${variables.breakpoints.desktop}) {
+    width: 306px;
+  }
 `;
 
 export const ImgBox = styled.div`
@@ -39,7 +48,6 @@ export const Image = styled.img`
 `;
 
 export const Author = styled.p`
-  margin-top: 14px;
   flex-grow: 1;
 
   font-size: 10px;
@@ -49,28 +57,26 @@ export const Author = styled.p`
 `;
 
 export const Description = styled.p`
-  margin-top: 14px;
   flex-grow: 1;
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
 
   color: black;
 `;
 export const Title = styled.p`
-  margin-top: 14px;
   flex-grow: 1;
 
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
 
   color: black;
 `;
 
 export const FavoriteContainer = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
 
   &:hover::after {

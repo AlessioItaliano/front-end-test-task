@@ -33,7 +33,7 @@ const ArticleForm = () => {
       </s.Label>
       <s.Label>
         Description
-        <s.InputDescription type="email" name="description" required />
+        <s.InputDescription type="text" name="description" required />
       </s.Label>
       <Button type={'submit'} name={'Create'} />
     </s.Form>
