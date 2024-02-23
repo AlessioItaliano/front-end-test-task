@@ -17,8 +17,8 @@ export const Label = styled.label`
   font-weight: 500;
 `;
 
-export const Input = styled.input`
-  width: 350px;
+export const InputTitle = styled.input`
+  width: 100%;
   padding: 18px 20px;
   font-size: 18px;
 
@@ -26,4 +26,18 @@ export const Input = styled.input`
   background: ${variables.colors.quinary};
   border-radius: 18px;
   border: 1px solid transparent;
+  box-sizing: border-box;
+`;
+
+export const InputDescription = styled.input`
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 18px;
+  height: 100%;
+
+  color: ${variables.colors.primary};
+  background: ${variables.colors.quinary};
+  border-radius: 18px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
 `;

@@ -14,9 +14,13 @@ const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <s.Header>
-      <s.Logo to="/">
-        <img src={mainLogo} alt="News_logo" />
-      </s.Logo>
+      <>
+        <s.Logo to="/">
+          <img src={mainLogo} alt="News_logo" />
+        </s.Logo>
+        {isLoggedIn ? <s.Link to="/account">Account</s.Link> : null}
+      </>
+
       {isLoggedIn ? <UserMenu /> : <AuthNavigation />}
     </s.Header>
   );

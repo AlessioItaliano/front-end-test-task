@@ -25,3 +25,17 @@ export const Logo = styled(NavLink)`
 
   cursor: pointer;
 `;
+
+export const Link = styled(NavLink)`
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  color: ${variables.colors.primary};
+
+  &.active,
+  &:hover {
+    color: ${variables.colors.tertiary};
+  }
+`;

@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet';
 import RegisterForm from 'components/RegisterForm';
+import Section from 'components/Section';
 
 const Register = () => {
   return (
-    <div>
+    <Section>
       <Helmet>
         <title>Registration</title>
       </Helmet>
       <RegisterForm />
-    </div>
+    </Section>
   );
 };
 

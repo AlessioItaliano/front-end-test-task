@@ -1,24 +1,18 @@
 import styled from 'styled-components';
 
-import { variables } from 'stylesheet/variables';
+import { variables } from '../../stylesheet/variables';
 
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 15px;
-`;
 
-export const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: 500;
+  margin-bottom: 30px;
 `;
 
 export const Input = styled.input`
-  width: 350px;
+  width: 400px;
   padding: 18px 20px;
   font-size: 18px;
 

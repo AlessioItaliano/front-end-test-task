@@ -43,7 +43,7 @@ const ArticlesList = () => {
       if (page === 1) {
         response = await dispatch(getFirstPage());
       } else {
-        response = await dispatch(getNextPage(page));
+        response = await dispatch(getNextPage({ page }));
       }
 
       setShowLoadMoreBtn(checkTotalResults(response, page));

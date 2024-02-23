@@ -4,6 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 import { variables } from '../../stylesheet/variables';
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const Link = styled(NavLink)`
   display: inline-block;
   text-decoration: none;

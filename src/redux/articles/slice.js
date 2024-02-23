@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getFirstPage, getNextPage } from './operation';
+import { getFirstPage, getNextPage, getRequest } from './operation';
 
 const initialState = {
   articles: [],
@@ -32,6 +32,18 @@ export const articlesSlice = createSlice({
         state.articles = [...state.articles, ...action.payload.articles];
       })
       .addCase(getNextPage.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getRequest.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getRequest.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.articles = action.payload.articles;
+      })
+      .addCase(getRequest.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       });

@@ -1,14 +1,15 @@
 import { Helmet } from 'react-helmet';
 import LoginForm from 'components/LoginForm';
+import Section from 'components/Section';
 
 const Login = () => {
   return (
-    <div>
+    <Section>
       <Helmet>
         <title>Login</title>
       </Helmet>
       <LoginForm />
-    </div>
+    </Section>
   );
 };
 
