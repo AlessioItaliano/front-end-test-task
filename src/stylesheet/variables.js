@@ -4,16 +4,17 @@ export const variables = {
     secondary: '#fff',
     tertiary: '#306cce',
     quaternary: '#72a1ed',
-    quinary: '',
+    quinary: '#e8f0fe',
 
     accent: '#3470FF',
-    accentHover: '#0B44CD',
-    accentBtn: 'rgba(52, 112, 255, 1)',
-    accentBtnHover: 'rgba(11, 68, 205, 1)',
 
     bgMain: '#F5F6F8',
 
     boxShadow: 'rgba(0, 0, 0, 0.05)',
+
+    accentHover: '#0B44CD',
+    accentBtn: 'rgba(52, 112, 255, 1)',
+    accentBtnHover: 'rgba(11, 68, 205, 1)',
 
     iconNorm: 'rgba(255, 255, 255, 0.8)',
 

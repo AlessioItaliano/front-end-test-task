@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getFirstPage, getNextPage } from '../../redux/articles/operation';
-
 import {
   selectArticles,
   selectError,
@@ -66,7 +65,7 @@ const ArticlesList = () => {
               </div>
             ))}
           {showLoadMoreBtn && (
-            <Button func={onLoadMoreBtn} name={'Load more'} />
+            <Button func={onLoadMoreBtn} name={'Load more'} type={'button'} />
           )}
         </>
       )}

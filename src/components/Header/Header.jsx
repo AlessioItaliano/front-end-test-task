@@ -1,16 +1,23 @@
-import Button from 'components/Button';
-import * as s from './Header.styled';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+
+// import Button from 'components/Button';
 
 import mainLogo from 'images/logo.png';
 
+import * as s from './Header.styled';
+
+import UserMenu from 'components/UserMenu';
+import AuthNavigation from 'components/AuthNavigation';
+
 const Header = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <s.Header>
       <s.Logo to="/">
         <img src={mainLogo} alt="News_logo" />
       </s.Logo>
-      <Button name={'Register'} />
-      <Button name={'Log in'} />
+      {isLoggedIn ? <UserMenu /> : <AuthNavigation />}
     </s.Header>
   );
 };

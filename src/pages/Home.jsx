@@ -1,15 +1,11 @@
-// import Hero from 'components/Hero';
-// import Benefits from 'components/Benefits';
-
 import ArticlesList from 'components/ArticlesList';
+import Section from 'components/Section';
 
 const Home = () => {
   return (
-    <>
+    <Section>
       <ArticlesList />
-      {/* <Hero />
-      <Benefits /> */}
-    </>
+    </Section>
   );
 };
 

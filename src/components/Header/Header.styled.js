@@ -12,7 +12,6 @@ export const Header = styled.div`
   height: auto;
   width: 100%;
   padding: 10px 20px;
-  margin-bottom: 30px;
 
   box-shadow: 0 4px 4px ${variables.colors.boxShadow};
   border-radius: 0 0 10px 10px;

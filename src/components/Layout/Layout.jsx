@@ -10,13 +10,13 @@ import * as s from './Layout.styled';
 const Layout = () => {
   return (
     <>
+      <Header />
       <s.Port>
-        <Header />
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
-        <Footer />
       </s.Port>
+      <Footer />
     </>
   );
 };

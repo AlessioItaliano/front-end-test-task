@@ -1,18 +1,20 @@
 import axios from 'axios';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const API_KEY = 'b1969fcdd10b43f79421471d42c2f6ec';
 
-axios.defaults.baseURL = 'https://newsapi.org/v2/everything?q=keyword&';
-axios.defaults.headers.common['Authorization'] = API_KEY;
+const API = axios.create({
+  baseURL: 'https://newsapi.org/v2',
+});
 
 export const getFirstPage = createAsyncThunk(
   'articles/getFirstPage',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/', {
+      const response = await API.get('/everything', {
         params: {
+          q: 'keyword',
+          apiKey: API_KEY,
           page: 1,
           pageSize: 10,
         },
@@ -29,8 +31,10 @@ export const getNextPage = createAsyncThunk(
   'articles/getNextPage',
   async (page, thunkAPI) => {
     try {
-      const response = await axios.get('/', {
+      const response = await API.get('/everything', {
         params: {
+          q: 'keyword',
+          apiKey: API_KEY,
           page,
           pageSize: 10,
         },

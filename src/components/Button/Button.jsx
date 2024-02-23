@@ -1,8 +1,8 @@
 import * as s from './Button.styled';
 
-const Button = ({ func, name }) => {
+const Button = ({ func, name, type }) => {
   return (
-    <s.Button type="button" onClick={func}>
+    <s.Button type={type} onClick={func}>
       {name}
     </s.Button>
   );
