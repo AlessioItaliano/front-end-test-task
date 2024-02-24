@@ -13,6 +13,7 @@ import Loader from 'components/Loader';
 import Button from 'components/Button';
 
 import * as s from './ArticlesList.styled';
+import { selectUserArticles } from '../../redux/userArticles/selectors';
 
 const ArticlesList = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ const ArticlesList = () => {
   const articles = useSelector(selectArticles);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
+
+  const userArticles = useSelector(selectUserArticles);
 
   console.log(articles);
 
@@ -39,7 +42,6 @@ const ArticlesList = () => {
   useEffect(() => {
     const fetchData = async () => {
       let response;
-
       if (page === 1) {
         response = await dispatch(getFirstPage());
       } else {
@@ -52,15 +54,17 @@ const ArticlesList = () => {
     fetchData();
   }, [dispatch, page]);
 
+  const allArticles = [...userArticles, ...articles];
+
   return (
     <>
-      {!isLoading && !error ? (
+      {isLoading && !error ? (
         <Loader />
       ) : (
         <>
           <s.Container>
-            {articles &&
-              articles.map(article => (
+            {allArticles &&
+              allArticles.map(article => (
                 <div key={article.publishedAt}>
                   <Article article={article} />
                 </div>

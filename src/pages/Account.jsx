@@ -1,13 +1,11 @@
 import Section from 'components/Section';
-import UserArticles from 'components/UserArticles';
+import UserAccount from 'components/UserAccount';
 
 const Account = () => {
   return (
-    <>
-      <Section>
-        <UserArticles />
-      </Section>
-    </>
+    <Section>
+      <UserAccount />
+    </Section>
   );
 };
 

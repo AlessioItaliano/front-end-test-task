@@ -31,7 +31,8 @@ export const InputDescription = styled.textarea`
   padding: 18px 20px;
   font-size: 18px;
   height: 180px;
-  resize: vertical;
+
+  resize: none;
 
   color: ${variables.colors.primary};
   background: ${variables.colors.quinary};

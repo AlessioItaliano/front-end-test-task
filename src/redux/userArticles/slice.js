@@ -16,24 +16,19 @@ export const userArticlesSlice = createSlice({
   name: 'userArticles',
   initialState,
   reducers: {
-    addFavorite: (state, action) => {
-      const existing = state.favorite.findIndex(
-        article => article.id === action.payload.id
-      );
-      if (existing === -1) {
-        state.favorite.push(action.payload);
-      }
+    addUserArticle: (state, action) => {
+      state.userArticles.push(action.payload);
     },
-    removeFavorite: (state, action) => {
-      state.favorite = state.favorite.filter(
-        article => article.id !== action.payload.id
+
+    removeUserArticle: (state, action) => {
+      state.userArticles = state.userArticles.filter(
+        article => article.id !== action.payload
       );
     },
   },
 });
 
-export const { addUserArticles, removeUserArticles } =
-  userArticlesSlice.actions;
+export const { addUserArticle, removeUserArticle } = userArticlesSlice.actions;
 
 export const userArticlesReducer = persistReducer(
   persistConfig,
