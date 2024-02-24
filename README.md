@@ -2,7 +2,7 @@
 
 Gretings and welcome on my news website!
 
-![MainPage](https://github.com/AlessioItaliano/front-end-test-task/tree/main/public/readMe/MainPage.png)
+![MainPage](https://github.com/AlessioItaliano/front-end-test-task/blob/main/public/readMe/MainPage.png)
 
 # About Website
 
