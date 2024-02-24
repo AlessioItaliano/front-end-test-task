@@ -54,7 +54,6 @@ const ArticlesList = () => {
     fetchData();
   }, [dispatch, page]);
 
-  // const allArticles = [...userArticles, ...articles];
   const allArticles = [...userArticles, ...articles].slice(0, page * 10);
 
   return (
