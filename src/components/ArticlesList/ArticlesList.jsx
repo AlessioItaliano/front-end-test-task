@@ -7,27 +7,63 @@ import {
   selectError,
   selectIsLoading,
 } from '../../redux/articles/selectors';
+import { selectFavorite } from '../../redux/favorites/selectors';
+import { selectUserArticles } from '../../redux/userArticles/selectors';
 
 import Article from 'components/Article';
 import Loader from 'components/Loader';
 import Button from 'components/Button';
 
 import * as s from './ArticlesList.styled';
-import { selectUserArticles } from '../../redux/userArticles/selectors';
 
 const ArticlesList = () => {
   const dispatch = useDispatch();
 
-  const [page, setPage] = useState(1);
-  const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(false);
-
   const articles = useSelector(selectArticles);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-
+  const favoriteArticle = useSelector(selectFavorite);
   const userArticles = useSelector(selectUserArticles);
 
-  console.log(articles);
+  const [page, setPage] = useState(1);
+  const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(false);
+  const [allArticles, setAllArticles] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let response;
+      if (page === 1) {
+        response = await dispatch(getFirstPage());
+      } else {
+        response = await dispatch(getNextPage(page));
+      }
+
+      setShowLoadMoreBtn(checkTotalResults(response, page));
+    };
+
+    fetchData();
+  }, [dispatch, page]);
+
+  useEffect(() => {
+    const allArticles = [
+      ...favoriteArticle,
+      ...userArticles,
+      ...articles,
+    ].slice(0, page * 10);
+
+    const filteredArticles = allArticles.filter(
+      (article, index, self) =>
+        index === self.findIndex(a => a.publishedAt === article.publishedAt)
+    );
+
+    if (filteredArticles.length < page * 10) {
+      const lastArticle = page * 10 - filteredArticles.length;
+      const remainingArticles = articles.slice(-lastArticle);
+      setAllArticles([...filteredArticles, ...remainingArticles]);
+    } else {
+      setAllArticles(filteredArticles);
+    }
+  }, [favoriteArticle, userArticles, articles, page]);
 
   const onLoadMoreBtn = () => {
     setPage(page + 1);
@@ -39,23 +75,6 @@ const ArticlesList = () => {
     );
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let response;
-      if (page === 1) {
-        response = await dispatch(getFirstPage());
-      } else {
-        response = await dispatch(getNextPage({ page }));
-      }
-
-      setShowLoadMoreBtn(checkTotalResults(response, page));
-    };
-
-    fetchData();
-  }, [dispatch, page]);
-
-  const allArticles = [...userArticles, ...articles].slice(0, page * 10);
-
   return (
     <>
       {isLoading && !error ? (
@@ -66,6 +85,8 @@ const ArticlesList = () => {
             {allArticles &&
               allArticles.map(article => (
                 <div key={article.publishedAt}>
+                  {/* // тут має бути використаний id, оскільки не усіх даних з
+                  newapi.org є id // */}
                   <Article article={article} />
                 </div>
               ))}

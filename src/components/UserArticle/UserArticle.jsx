@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUserArticle } from '../../redux/userArticles/slice';
 import { selectUserArticles } from '../../redux/userArticles/selectors';
 
-import * as s from './UserArticle.styled';
 import Button from 'components/Button';
+
+import * as s from './UserArticle.styled';
 
 const UserArticle = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const UserArticle = () => {
 
   const handleRemove = e => {
     e.stopPropagation();
-    dispatch(removeUserArticle(e.currentTarget.id));
+    dispatch(removeUserArticle(e.currentTarget.publishedAt));
   };
 
   return (
@@ -26,7 +27,10 @@ const UserArticle = () => {
         <s.Container>
           <s.List>
             {userArticles.map(article => (
-              <s.Item key={article.id}>
+              <s.Item key={article.publishedAt}>
+                {/* // тут має бути використаний id, оскільки не усіх даних з
+                  newapi.org є id// */}
+
                 <s.ImgBox>
                   <s.Image src={article.urlToImage} alt="Article_img" />
                 </s.ImgBox>
@@ -34,7 +38,7 @@ const UserArticle = () => {
                 <s.Description>{article.description}</s.Description>
                 <s.Title>{article.title}</s.Title>
                 <Button
-                  id={article.id}
+                  id={article.publishedAt}
                   func={handleRemove}
                   name={'Remove'}
                   type={'submit'}

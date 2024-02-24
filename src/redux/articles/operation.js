@@ -29,17 +29,16 @@ export const getFirstPage = createAsyncThunk(
 
 export const getNextPage = createAsyncThunk(
   'articles/getNextPage',
-  async ({ page, q = 'keyword' }, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
       const response = await API.get('/everything', {
         params: {
-          q,
+          q: 'keyword',
           apiKey: API_KEY,
           page,
           pageSize: 10,
         },
       });
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -59,7 +58,6 @@ export const getRequest = createAsyncThunk(
           pageSize: 10,
         },
       });
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

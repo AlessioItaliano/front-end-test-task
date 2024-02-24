@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+
 import { selectFavorite } from '../../redux/favorites/selectors';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { addFavorite, removeFavorite } from '../../redux/favorites/slice';

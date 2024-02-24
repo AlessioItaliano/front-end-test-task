@@ -7,7 +7,6 @@ const Home = () => {
     <>
       <Section>
         <SearchBar />
-
         <ArticlesList />
       </Section>
     </>

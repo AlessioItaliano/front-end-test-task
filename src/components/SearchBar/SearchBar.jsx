@@ -13,8 +13,6 @@ const SearchBar = () => {
     const form = e.currentTarget;
     const findRequest = form.elements.findRequest.value;
 
-    console.log(form);
-    console.log(findRequest);
     dispatch(getRequest(findRequest));
     form.reset();
   };

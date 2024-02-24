@@ -53,7 +53,7 @@ export const Author = styled.p`
   font-size: 10px;
   font-weight: 500;
 
-  color: black;
+  color: ${variables.colors.primary};
 `;
 
 export const Description = styled.p`
@@ -62,7 +62,7 @@ export const Description = styled.p`
   font-size: 12px;
   font-weight: 500;
 
-  color: black;
+  color: ${variables.colors.primary};
 `;
 export const Title = styled.p`
   flex-grow: 1;
@@ -70,7 +70,7 @@ export const Title = styled.p`
   font-size: 16px;
   font-weight: 700;
 
-  color: black;
+  color: ${variables.colors.primary};
 `;
 
 export const FavoriteContainer = styled.div`
